@@ -60,7 +60,7 @@ def record_parser(value):
   channels = tf.cast(tf.reshape(parsed['image/channels'], shape=[]),dtype=tf.int32)
   
   #decode 3D array data (important to check data type and byte order)
-  image = tf.reshape(tf.decode_raw(parsed['image/encoded'],out_type=tf.float32,little_endian=True),shape=[width,height,depth,channels])
+  image = tf.reshape(tf.decode_raw(parsed['image/encoded'],out_type=tf.float32,little_endian=True),shape=[height,width,depth,channels])
     
   print("image decoded")
   
