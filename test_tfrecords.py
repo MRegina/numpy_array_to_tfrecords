@@ -86,7 +86,7 @@ def input_fn(data_dir, batch_size=1, num_epochs=1):
   dataset = tf.data.Dataset.from_tensor_slices(filenames(is_training,is_testing, data_dir))
 
   dataset = dataset.flat_map(tf.data.TFRecordDataset)
-  dataset = dataset.map(lambda value: record_parser(value, is_training), num_parallel_calls=5)
+  dataset = dataset.map(lambda value: record_parser(value), num_parallel_calls=5)
   dataset = dataset.prefetch(batch_size)
 
   dataset = dataset.repeat(num_epochs)
